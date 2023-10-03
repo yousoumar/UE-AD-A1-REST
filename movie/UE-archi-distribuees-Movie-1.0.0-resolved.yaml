@@ -188,8 +188,6 @@ paths:
       responses:
         "200":
           description: User sees the page
-        "400":
-          description: User don't see the page
 components:
   schemas:
     AllMovies:
