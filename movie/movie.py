@@ -16,7 +16,6 @@ with open('{}/databases/movies.json'.format("."), "r") as jsf:
 def home():
     return make_response("<h1 style='color:blue'>Welcome to the Movie service!</h1>",200)
 
-<<<<<<< Updated upstream
 @app.route("/template", methods=['GET'])
 def template():
     return make_response(render_template('index.html', body_text='This is my HTML template for Movie service'),200)
@@ -82,7 +81,6 @@ def del_movie(movieid):
     res = make_response(jsonify({"error":"movie ID not found"}),400)
     return res
 
-=======
 @app.route("/movies/best", methods=["GET"])
 def rating_process()
     rating=0
@@ -92,7 +90,6 @@ def rating_process()
             rating=rate["rating"]
             dic=rate
     return jsonify(dic)
->>>>>>> Stashed changes
 if __name__ == "__main__":
     #p = sys.argv[1]
     print("Server running in port %s"%(PORT))
