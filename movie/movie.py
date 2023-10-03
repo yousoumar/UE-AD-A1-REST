@@ -81,6 +81,15 @@ def del_movie(movieid):
     res = make_response(jsonify({"error":"movie ID not found"}),400)
     return res
 
+@app.route("/movies/best", methods=["GET"])
+def rating_process()
+    rating=0
+    dic= {}
+    for rate in jsf:
+        if rate["rating"]>rating:
+            rating=rate["rating"]
+            dic=rate
+    return jsonify(dic)
 if __name__ == "__main__":
     #p = sys.argv[1]
     print("Server running in port %s"%(PORT))
