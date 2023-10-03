@@ -179,6 +179,17 @@ paths:
           description: rate updated
         "400":
           description: movie ID not found
+  /movies/best
+    get:
+      tags:
+      -developers
+      summary: Shows the highest rated movie.
+      description: Show a page containing the JSON of the highest rated movie.
+      responses:
+        "200":
+          description: User sees the page
+        "400":
+          description: User don't see the page
 components:
   schemas:
     AllMovies:
