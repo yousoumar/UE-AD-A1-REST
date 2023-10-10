@@ -1,7 +1,7 @@
 ---
 openapi: 3.1.0
 info:
-  title: Showtime API
+  title: User API
   description: This is the API of the User service
   contact:
     email: helene.coullon@imt-atlantique.fr
@@ -41,20 +41,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllSchedule'
+                $ref: '#/components/schemas/AllUser'
   /users/<userid>:
     get:
       tags:
         -developers
       summary: get the JSON entry of the user who's id is userid
       operationId: get_user_by_id
+      parameters:
+        - name: userid
+        in: path
+        description: User ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
           description: return the JSON
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllSchedule'
+                $ref: '#/components/schemas/User'
         "400":
           description: ID not found
   /users/<userid>/bookings:
@@ -63,13 +72,22 @@ paths:
         -developers
       summary: get the JSON of all the film the user booked
       operationId: get_user_bookings
+      parameters:
+        - name: userid
+        in: path
+        description: User ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       responses:
         "200":
           description: return the JSON
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllSchedule'
+                $ref: '#/components/schemas/Bookings'
         "400":
           description: ID not found
     post:
@@ -77,30 +95,41 @@ paths:
         -developers
       summary: update the JSON of a user's booking
       operationId: book_for_user
+      parameters:
+        - name: userid
+        in: path
+        description: User ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewMovie'
       responses:
         "200":
           description: update the JSON
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AllSchedule'
+                $ref: '#/components/schemas/Booking'
         "409":
           description: date or movieid incorect or not provided or already booked
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AllSchedule'
 components:
   schemas:
-    AllSchedule:
+    AllUser:
       type: object
       properties:
         Schedule:
           type: array
           items:
             type: object
-            $ref: '#/components/schemas/AllSchedule'
-    ScheduleItem:
+            $ref: '#/components/schemas/User'
+    User:
       type: object
       required:
         - id
@@ -116,3 +145,36 @@ components:
         last_active:
           type: int
           example: 1360031010
+    Bookings:
+      type: object
+      properties:
+        Schedule:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Booking'
+    Booking:
+      type: object
+      required:
+        - userid
+        - dates
+      properties:
+        userid:
+          type: string
+          example: "chris_rivers"
+        dates:
+          type: array
+          items: 
+            type: object
+    NewMovie:
+      required:
+      - date
+      - movieid
+      type: object
+      properties:
+        date:
+          type: string
+          example: "20151201"
+        movieid:
+          type: string
+          example: 276c79ec-a26a-40a6-b3d3-fb242a5947b6
