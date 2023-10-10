@@ -1,0 +1,118 @@
+---
+openapi: 3.1.0
+info:
+  title: Showtime API
+  description: This is the API of the User service
+  contact:
+    email: helene.coullon@imt-atlantique.fr
+  license:
+    name: GPL v3
+    url: https://www.gnu.org/licenses/gpl-3.0.en.html
+  version: 1.0.0
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+paths:
+  /:
+    get:
+      tags:
+      - developers
+      summary: home page of the service
+      operationId: home
+      responses:
+        "200":
+          description: welcome message
+          content:
+            text/html:
+              schema:
+                type: string
+                example: <h1>Test</h1>
+  /users:
+    get:
+      tags:
+      - developers
+      summary: get the full JSON database
+      operationId: get_users
+      responses:
+        "200":
+          description: full JSON
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllSchedule'
+  /users/<userid>:
+    get:
+      tags:
+        -developers
+      summary: get the JSON entry of the user who's id is userid
+      operationId: get_user_by_id
+      responses:
+        "200":
+          description: return the JSON
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllSchedule'
+        "400":
+          description: ID not found
+  /users/<userid>/bookings:
+    get:
+      tags:
+        -developers
+      summary: get the JSON of all the film the user booked
+      operationId: get_user_bookings
+      responses:
+        "200":
+          description: return the JSON
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllSchedule'
+        "400":
+          description: ID not found
+    post:
+      tags:
+        -developers
+      summary: update the JSON of a user's booking
+      operationId: book_for_user
+      responses:
+        "200":
+          description: update the JSON
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllSchedule'
+        "409":
+          description: date or movieid incorect or not provided or already booked
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllSchedule'
+components:
+  schemas:
+    AllSchedule:
+      type: object
+      properties:
+        Schedule:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/AllSchedule'
+    ScheduleItem:
+      type: object
+      required:
+        - id
+        - name
+        - last_active
+      properties:
+        id:
+          type: string
+          example: "chris_rivers"
+        name:
+          type: string
+          example: "Chris Rivers"
+        last_active:
+          type: int
+          example: 1360031010

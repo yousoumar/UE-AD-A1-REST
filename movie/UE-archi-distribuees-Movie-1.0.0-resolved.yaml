@@ -183,6 +183,7 @@ paths:
     get:
       tags:
       -developers
+      operationId: rating_process
       summary: Shows the highest rated movie.
       description: Show a page containing the JSON of the highest rated movie.
       responses:
