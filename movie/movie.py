@@ -30,8 +30,8 @@ def template():
     )
 
 
-@app.route("/json", methods=["GET"])
-def get_json():
+@app.route("/movies", methods=["GET"])
+def get_movies():
     res = make_response(jsonify(movies), 200)
     return res
 

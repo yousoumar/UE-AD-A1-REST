@@ -34,14 +34,14 @@ paths:
               schema:
                 type: string
                 example: <h1 style='color:blue'>Welcome to the Movie service!</h1>
-  /json:
+  /movies:
     get:
       tags:
       - developers
       summary: get the full JSON database
       description: |
         Nothing to do
-      operationId: get_json
+      operationId: get_movies
       responses:
         "200":
           description: full JSON
