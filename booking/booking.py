@@ -6,7 +6,7 @@ from werkzeug.exceptions import NotFound
 app = Flask(__name__)
 
 PORT = 3201
-HOST = "localhost"
+HOST = "0.0.0.0"
 
 with open("{}/databases/bookings.json".format("."), "r") as jsf:
     bookings = json.load(jsf)["bookings"]
@@ -37,7 +37,7 @@ def get_booking_for_user(userid):
 @app.route("/bookings/<userid>", methods=["POST"])
 def add_booking_byuser(userid):
     data = request.get_json()
-    res = requests.get("http://localhost:3202/showtimes")
+    res = requests.get("http://showtime:3202/showtimes")
     schedule = res.json()
 
     for schedule_item in schedule:
