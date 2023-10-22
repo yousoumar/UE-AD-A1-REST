@@ -15,3 +15,5 @@ You should have Docker and Docker Compose installed. After that, it's as simple 
 ```sh
 docker-compose up
 ```
+
+The user service can be accesd on `http://localhost:3203`, the showtime on `http://localhost:3202`, the booking on `http://localhost:3201`, and the movie on `http://localhost:3200`.
