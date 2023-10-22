@@ -6,7 +6,7 @@ from werkzeug.exceptions import NotFound
 app = Flask(__name__)
 
 PORT = 3200
-HOST = "localhost"
+HOST = "0.0.0.0"
 
 with open("{}/databases/movies.json".format("."), "r") as jsf:
     movies = json.load(jsf)["movies"]
@@ -30,8 +30,8 @@ def template():
     )
 
 
-@app.route("/json", methods=["GET"])
-def get_json():
+@app.route("/movies", methods=["GET"])
+def get_movies():
     res = make_response(jsonify(movies), 200)
     return res
 
