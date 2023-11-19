@@ -45,11 +45,11 @@ paths:
   /users/<userid>:
     get:
       tags:
-        -developers
+        - developers
       summary: get the JSON entry of the user who's id is userid
       operationId: get_user_by_id
       parameters:
-        - name: userid
+      - name: userid
         in: path
         description: User ID
         required: true
@@ -69,11 +69,11 @@ paths:
   /users/<userid>/bookings:
     get:
       tags:
-        -developers
+        - developers
       summary: get the JSON of all the film the user booked
       operationId: get_user_bookings
       parameters:
-        - name: userid
+      - name: userid
         in: path
         description: User ID
         required: true
@@ -92,11 +92,11 @@ paths:
           description: ID not found
     post:
       tags:
-        -developers
-      summary: update the JSON of a user's booking
+        - admins
+      summary: Book a movie for a user
       operationId: book_for_user
       parameters:
-        - name: userid
+      - name: userid
         in: path
         description: User ID
         required: true
@@ -166,6 +166,7 @@ components:
           type: array
           items: 
             type: object
+          example: [ { "date": "20151201", "movies": [ "267eedb8-0f5d-42d5-8f43-72426b9fb3e6", "a8034f44-aee4-44cf-b32c-74cf452aaaae" ] } ]
     NewMovie:
       required:
       - date
