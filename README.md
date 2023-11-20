@@ -2,7 +2,9 @@
 
 As part of our Distributed System course at IMT Atlantique, this project is about the implementation of REST APIs in the context of a movie booking system with 4 microservices.
 
-The four services are: `movie`, `booking`, `showtime` and `user`. Where a user can book a movie, which should be in a showtime.
+The four services are: `movie`, `booking`, `showtime` and `user`, where a user can book a movie, which should be in a showtime:
+
+![Architecture illustration](./architecture.png)
 
 The endpoints of each service are specified in an OpenAPI Specification based YAML file in the corresponding folder.
 
