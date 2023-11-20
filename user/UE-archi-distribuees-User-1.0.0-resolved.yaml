@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllUser'
-  /users/<userid>:
+  /users/{userid}:
     get:
       tags:
         - developers
@@ -66,7 +66,7 @@ paths:
                 $ref: '#/components/schemas/User'
         "400":
           description: ID not found
-  /users/<userid>/bookings:
+  /users/{userid}/bookings:
     get:
       tags:
         - developers
