@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "af56ecff-853e-4601-a691-2d313afb527f",
+    "name": "UE-AD-A1-REST",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "_exporter_id": "18037196"
+  },
+  "item": [
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Get all bookings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3201/bookings"
+          },
+          "response": []
+        },
+        {
+          "name": "Get the bookings of a user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3201/bookings/chris_rivers"
+          },
+          "response": []
+        },
+        {
+          "name": "Add a booking to the bookings of a user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"date\": \"20151130\",\n    \"movieid\": \"39ab85e5-5e8e-4dc5-afea-65dc368bd7ab\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3201/bookings/chris_rivers"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Movie",
+      "item": [
+        {
+          "name": "Get all movies",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3200/movies"
+          },
+          "response": []
+        },
+        {
+          "name": "Get one movie by its id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3200/movies/720d006c-3a57-4b6a-b18f-9b713b073f3c"
+          },
+          "response": []
+        },
+        {
+          "name": "Update the rate of a movie",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": "http://localhost:3200/movies/720d006c-3a57-4b6a-b18f-9b713b073f3c/22"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete a movie",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "http://localhost:3200/movies/720d006c-3a57-4b6a-b18f-9b713b073f3c"
+          },
+          "response": []
+        },
+        {
+          "name": "Get best rated movie",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3200/movies/best"
+          },
+          "response": []
+        },
+        {
+          "name": "Create a movie",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": " {\n      \"title\": \"Iron Man\",\n      \"rating\": 7.4,\n      \"director\": \"Youssouf Oumar\",\n      \"id\": \"96798c08-d19b-4986-a0sfsda856efb697ffsf\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3200/movies/96798c08-d19b-4986-a0sfsda856efb697ffsf"
+          },
+          "response": []
+        },
+        {
+          "name": "Get one movie by its title",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3200/moviesbytitle?title=Creed",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3200",
+              "path": ["moviesbytitle"],
+              "query": [
+                {
+                  "key": "title",
+                  "value": "Creed"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Showtime",
+      "item": [
+        {
+          "name": "Get showtimes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3202/showtimes"
+          },
+          "response": []
+        },
+        {
+          "name": "Get the movies of a date",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3202/showmovies/20151130"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Get all users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3203/users"
+          },
+          "response": []
+        },
+        {
+          "name": "Book a movie on a date for a user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"date\": \"20151130\",\n    \"movieid\": \"a8034f44-aee4-44cf-b32c-74cf452aaaae\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://localhost:3203/users/chris_rivers/bookings"
+          },
+          "response": []
+        },
+        {
+          "name": "Get a user by its id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3203/users/chris_rivers"
+          },
+          "response": []
+        },
+        {
+          "name": "Get the bookings of a user",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "http://localhost:3203/users/chris_rivers/bookings"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
